@@ -1,0 +1,77 @@
+{% load static %}
+
+<html>
+<head>
+	<link rel="stylesheet" href="{% static 'css/reg-d.css' %}">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+	<header>
+		SAQTA
+	</header>
+	<div class="main">
+		<div class="content">
+			<h1 class="reg-t">Create Stories</h1>
+			<form action="{% url 'create_story' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+        
+                <div class="form" id="name">
+                    <input type="text" name="title" autocomplete="off" required />
+                    <label for="text" class="label-name">
+                        <span class="content-name">
+                            Title
+                        </span>
+                    </label>
+                </div>
+        
+                <div class="form" id="s-name">
+                    <p style="margin-right:30px;">Content:</p>
+                    <textarea name="content" autocomplete="off" required></textarea>
+                </div>
+                <br><br><br><br><br><br><br>
+                <div class="form" id="tel">
+                    <p style="margin-right:30px;">Hobbies:</p>
+                    <!-- Assuming 'hobby' is a dropdown/select field -->
+                    <select name="hobby" required>
+                        {% for hobby in hobbies %}
+                        <option value="{{ hobby.id }}">{{ hobby.name }}</option>
+                        {% endfor %}
+                    </select>
+
+                </div>
+                <p style="margin-right:30px;">Photo:</p>
+                <div class="form" id="username" style="margin-left: 40px;">
+                    <input type="file" name="photo" accept="image/*" required />
+
+                </div>
+        
+                <button class="button" type="submit" style="background-color: rgb(57, 49, 133);">
+                    <p class="button-text" style="color:white;">Continue</p>
+                    <img class="button-icon" src="https://cdn-icons-png.flaticon.com/512/109/109617.png">
+                </button>
+            </form>
+			
+		</div>
+	</div>
+	<script>
+		function myFunction() {
+  			var x = document.getElementById("hid");
+  			if (x.type === "password") {
+    			x.type = "text";
+    			document.getElementById("hide").type = "text";
+    			document.querySelector('i').classList.remove('fa-eye');
+            	document.querySelector('i').classList.add('fa-eye-slash');
+  			} else {
+    			x.type = "password";
+    			document.getElementById("hide").type = "password";
+    			document.querySelector('i').classList.remove('fa-eye-slash');
+            	document.querySelector('i').classList.add('fa-eye');
+  			}
+		}
+	</script>
+</body>
+</html>

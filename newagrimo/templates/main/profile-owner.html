@@ -1,0 +1,43 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block style %}
+  <title>SAQTA</title>
+  <link rel="stylesheet" href="{% static 'css/po-d.css' %}">
+{% endblock %}
+
+{% block content %}
+  <div id="ava">
+    <img src="{% static 'images/alisher.PNG' %}" width="100%" height="100%">
+  </div>
+  <div id="prof">
+    <h1>{{ user.last_name }} <span></span>{{ user.first_name }}</h1>
+    <p>{{ user.email }}</p>
+    <p>{{ user.username }}</p>
+    <div id="edit">
+      <button style="margin-right: 15px;" id="ed" onclick="toggleReadonly()"><span id="iz">Изменить</span><i class="fa fa-pencil" aria-hidden="true"></i></button>
+      <button><span>Настройки</span><i class="fa fa-cog" aria-hidden="true"></i></button>
+    </div>
+  </div>
+  
+  <div id="description">
+    <div id="contdes">
+      <h1>Данные:</h1>
+      <form id="data">
+        <div>
+          <p>Почта</p>
+          <input id = "email" type="text" value="{{user.email}}" readonly>
+        </div>
+        <div id="ci">
+          <p>ФИО</p>
+          <input id = "city" type="text" value="{{user.first_name}} {{user.last_name}}" readonly>
+        </div>
+        <div id="re">
+          <p>Никнейм(Username)</p>
+          <input id = "reg" type="text" value="{{user.username}}" readonly>
+        </div>
+        <button id="sub">Сохранить</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}

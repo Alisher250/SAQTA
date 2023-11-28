@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SAQTA</title>
+    <link rel="stylesheet" href="{% static 'css/reg-d.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+</head>
+<body>
+    <header>
+        SAQTA
+    </header>
+    <div class="main" style="background-image: url({% static 'z.webp' %});">
+        <div class="content">
+            <h1 class="reg-t">Загрузить</h1>
+            <hr>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="file" name="image" accept="image/*">
+                <input type="submit" value="Анализ">
+            </form>
+            <h1  class="reg-t">Анализ от ИИ</h1>
+            <hr>
+            {% if detected_texts %}
+                <p>{{ detected_texts }}</p>
+            {% else %}
+                <p></p>
+            {% endif %}
+        </div>
+    </div>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("hid");
+            if (x.type === "password") {
+                x.type = "text";
+                document.getElementById("hide").type = "text";
+                document.querySelector('i').classList.remove('fa-eye');
+                document.querySelector('i').classList.add('fa-eye-slash');
+            } else {
+                x.type = "password";
+                document.getElementById("hide").type = "password";
+                document.querySelector('i').classList.remove('fa-eye-slash');
+                document.querySelector('i').classList.add('fa-eye');
+            }
+        }
+    </script>
+</body>
+</html>

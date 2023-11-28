@@ -1,0 +1,132 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+<style>
+.container {
+  width: 200px; /* Adjust width as needed */
+  height: 50px; /* Adjust height as needed */
+  background-image: linear-gradient(to right, #C15CFE, #6506AF);
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adding shadow effect */
+  background-color: #fff; /* Button background color */
+  color: #333; /* Button text color */
+  padding: 10px 20px; /* Adjust padding as needed */
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth color transition */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Button shadow effect */
+}
+
+.container:hover {
+  background-color: #f0f0f0; /* Change to a lighter shade on hover */
+}
+
+</style>
+{% block style %}
+	<link rel="stylesheet" href="{% static 'css/home-d.css' %}">
+	<title>SAQTA</title>
+{% endblock %}
+
+{% block content %}
+	<div class="wrapper">
+		
+		<header style="position: relative; display: flex; justify-content: space-between;">
+			<img src="{% static 'images/sic.jpeg' %}" alt="Mask" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(50%);">
+			<div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: black; opacity: 0.5;"></div>
+			<div class="title-wrapper" style="position: relative; z-index: 1;">
+				<h1 class="title"><b>SAQTA</b></h1>
+				<p class="tit-des">Многофункциональная система, использующая <br>программое обеспечение для определения наркосайтов, <br>носимые браслеты и образовательные уроки <br>на основе VR для борьбы со злоупотреблением наркотических веществ</p>
+				<div id="start" style="background-image: linear-gradient(to right, rgb(10, 106, 165), #3da1ff); text-align: center; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+					<a href="{% url 'loginsystem' %}" style="color: white;">Войти |</a>
+					<a href="{% url 'signupsystem' %}" style="color: white; margin-left: -50px;">Зарегистрироваться</a>
+					<div class="span"><i class="fa fa-chevron-right fa-lg" aria-hidden="true"></i></div>
+				</div>
+			</div>
+		</header>
+		
+		
+		<section>
+			<h1 class="title-main"><b>SAQTA это:</b></h1>
+			<div class="square">
+			<div class="center-tabl">
+			<table class="vozh">
+				<tr>
+					<td class = "firs">
+						<h1>1.</h1><p>Personalized profiles of participants, their hobbies, hobbies, level of experience, areas of interest</p>
+					</td>
+					<td class = "firs">
+						<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-uk0z89jQjvwEkkwC5331YZLbJkwRTraDfPZsj0Kp6j56JJs7" height="200px" width="400px">
+					</td>
+					<td class = "firs">
+						<h1>3.</h1><p>Virtual exhibitions of people's hobbies through AR technologies</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<img src="https://habrastorage.org/r/w1560/getpro/habr/upload_files/36f/547/340/36f547340b4d9c8b1ed06c0717b1d879.jpg" height="200px" width="350px">
+					</td>
+					<td>
+						<h1>2.</h1><p>Generating photos and videos for user posts based on their AI-based hobbies</p>
+					</td>
+					<td>
+						<img src="https://static.techbriefs.com/images/econa/fields/3/com_content_article/32833/tb-0918-p16_fig1_primary-feature-item.jpg" height="200px" width="300px">
+					</td>
+				</tr>
+			</table>
+			</div>
+			<hr>
+			<h1 class="title-main"><b>Функции SAQTA</b></h1>
+			<div class="center-table">
+			<table id="poss">
+				<tr>
+					<td>
+						<img src="{% static 'images/pc.png' %}" height="200px" width="200px">
+					</td>
+					<td>
+						<img src="{% static 'images/sound.png' %}" height="200px" width="200px">
+					</td>
+					<td>
+						<img src="{% static 'images/group.png' %}" height="200px" width="200px">
+					</td>
+					<td>
+						<img src="{% static 'images/thgh.png' %}" height="200px" width="200px">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h1>SKills Exchange</h1><p>Personalized profiles of participants, their hobbies, hobbies, level of experience, areas of interest. Generating photos and videos for users' posts based on their AI-based hobbies for more interest</p>
+					</td>
+					<td>
+						<h1>Live Meetings</h1><p>Live broadcasts where people can communicate together in real time</p>
+					</td>
+					<td>
+						<h1>AR exhibition</h1><p>Innovative virtual exhibitions of people's hobbies through AR technologies</p>
+					</td>
+					<td>
+						<h1>Gamification</h1><p>Full user path of the user, rewards and encouragement for active participation in Skills Exchange</p>
+					</td>
+				</tr>
+			</table>
+			</div>
+			</div>
+		</section>
+	</div>
+{% endblock %}
+
+{% block script %}
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('square-animation');
+            }
+        });
+    });
+
+    observer.observe(document.querySelector('.square'));
+{% endblock %}

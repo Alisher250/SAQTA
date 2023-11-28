@@ -1,0 +1,112 @@
+{% load static %}
+<html>
+<head>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@500&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'css/lay-d.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'images/icon2.PNG' %}">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+    <title>SAQTA</title>
+	{% block style %}{% endblock %}
+</head>
+<body>
+	<div class="navbar" style="background-color: #2465a2;">
+		<ul class="navbar-l">
+			<li class="navbar-i"><a href="/">SAQTA</a>
+			</li>
+			<li class="navbar-i" id = "but"><button onclick ="show()"><i class="fa fa-bars" aria-hidden="true" style="color:white;"></i></button>
+			</li>
+			<li class="navbar-i" style="float: right;"><a href="mailto: orrynbai.a@gmail.com">Поддержка</a>
+			</li>
+			<li class="navbar-i" style="float: right;"><a href="/profileo">Профиль</a>
+			</li>
+		</ul>
+	</div>
+	<div id="sidebar">
+  	<div class="table-container">
+    	<table>
+      <tr>
+        <td><i class="fa fa-home icon" aria-hidden="true"></i></td>
+        <td class="text"><a href="/">Главная страница</a></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-user icon" aria-hidden="true"></i></td>
+        <td class="text"><a href="/profileo">Профиль</a></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-briefcase icon" aria-hidden="true"></i></td>
+        <td class="text"><a href="/compvision">Анализ наркосайтов</a></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-shopping-cart icon" aria-hidden="true"></i></td>
+        <td class="text"><a href="/lessons">Уроки для социального просвещения</a></td>
+      </tr>
+    	</table>
+  	</div>
+	</div>
+
+  <div id="content">
+	   {% block content %}
+	   {% endblock %}
+  </div>
+    {% block dscript %}{% endblock %}
+  <script>
+
+    window.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
+            var container = document.getElementById('content');
+            container.style.opacity = 1;
+        }, 500);
+    });
+    {% block script %}
+    {% endblock %}
+    function toggleReadonly() {
+        var inputElements = document.querySelectorAll('input');
+
+
+        document.getElementById('data').classList.toggle('edit');
+        document.getElementById('ed').classList.toggle('edit');
+
+
+        inputElements.forEach(function(inputElement) {
+            if (inputElement.readOnly) {
+                inputElement.readOnly = false;
+            } else {
+                inputElement.readOnly = true;
+            }
+        });
+
+
+        var izButton = document.getElementById("iz");
+        if (izButton.innerHTML === "Изменить") {
+            izButton.innerHTML = "Отменить";
+            document.getElementById('sub').style.opacity = 1;
+        } else {
+            izButton.innerHTML = "Изменить";
+            document.getElementById('sub').style.opacity = 0;
+        }
+    }
+
+    function show() {
+        var sidebar = document.getElementById('sidebar');
+        var content = document.getElementById('content');
+        var buttonIcon = document.querySelector('#but i');
+
+        sidebar.classList.toggle('active');
+        content.classList.toggle('shrink');
+        if (buttonIcon.classList.contains('fa-bars')) {
+            buttonIcon.classList.remove('fa-bars');
+            buttonIcon.classList.add('fa-times');
+        } else {
+            buttonIcon.classList.remove('fa-times');
+            buttonIcon.classList.add('fa-bars');
+        }
+    }
+  </script>
+</body>
+</html>

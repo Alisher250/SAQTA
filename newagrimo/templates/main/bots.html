@@ -1,0 +1,13 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/even-d.css' %}">
+	<title>Live Meetings</title>
+{% endblock %}
+{% block content %}
+<h1>Live Meetings</h1>
+<div class="news">
+<img src="{% static 'images/meeting.PNG' %}" alt="" width="1650px" >
+</div>
+{% endblock %}
